@@ -1,0 +1,38 @@
+[
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 787701189,
+    "stock": 32,
+    "id": 1
+  },
+  {
+    "title": "nintendo",
+    "description": "mendoza",
+    "price": 123,
+    "thumbnail": "imagen22",
+    "code": 2222,
+    "stock": 123,
+    "id": 3
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 12345,
+    "stock": 32,
+    "id": 4
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 123456,
+    "stock": 32,
+    "id": 5
+  }
+]
