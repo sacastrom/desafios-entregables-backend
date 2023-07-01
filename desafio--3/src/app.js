@@ -16,7 +16,7 @@ app.get("/productos", async (req, res) => {
     let response = await productManager.getProducts();
     const limit = req.query.limit || response.length;
     const productsLimit = response.slice(0, limit);
-    res.json(productsLimit);
+    res.json({data: productsLimit});
   } catch (err) {
     console.log(err);
   }
@@ -28,7 +28,7 @@ app.get("/productos/:productId", async (req, res) => {
   console.log(product);
 
   if (product) {
-    res.json(product);
+    res.json({data: product});
   } else {
     res.json({
       message: "el producto solicitado no existe",
