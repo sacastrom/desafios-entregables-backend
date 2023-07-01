@@ -1,0 +1,92 @@
+[
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 787701189,
+    "stock": 32,
+    "id": 1
+  },
+  {
+    "title": "nintendo",
+    "description": "mendoza",
+    "price": 123,
+    "thumbnail": "imagen22",
+    "code": 2222,
+    "stock": 123,
+    "id": 3
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 12345,
+    "stock": 32,
+    "id": 4
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 123456,
+    "stock": 32,
+    "id": 5
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 1234567,
+    "stock": 32,
+    "id": 6
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 1234568,
+    "stock": 32,
+    "id": 7
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 12345689,
+    "stock": 32,
+    "id": 8
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 123456891,
+    "stock": 32,
+    "id": 9
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 1234568911,
+    "stock": 32,
+    "id": 10
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 1234568913,
+    "stock": 32,
+    "id": 11
+  }
+]
