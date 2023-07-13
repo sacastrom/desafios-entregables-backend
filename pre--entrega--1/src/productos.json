@@ -1,0 +1,150 @@
+[
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 9,
+    "stock": 32,
+    "id": 5
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 10,
+    "stock": 32,
+    "id": 6
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 222,
+    "stock": 32,
+    "id": 4
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 2412,
+    "stock": 32,
+    "id": 1
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 241210,
+    "stock": 32,
+    "id": 2
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 241211,
+    "stock": 32,
+    "id": 3
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 241212,
+    "stock": 32,
+    "id": 7
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 241213,
+    "stock": 32,
+    "id": 8
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 241214,
+    "stock": 32,
+    "id": 9,
+    "status": true
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 241215,
+    "stock": 32,
+    "category": "almacen",
+    "id": 10,
+    "status": true
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 241216,
+    "stock": 32,
+    "category": "almacen",
+    "id": 11,
+    "status": true
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 241217,
+    "stock": 32,
+    "category": "almacen",
+    "id": 12,
+    "status": true
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 241218,
+    "stock": 32,
+    "category": "almacen",
+    "id": 13,
+    "status": true
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 241219,
+    "stock": 32,
+    "category": "almacen",
+    "id": 14,
+    "status": true
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 241220,
+    "stock": 32,
+    "category": "almacen",
+    "id": 15,
+    "status": true
+  }
+]
