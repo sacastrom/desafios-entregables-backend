@@ -9,6 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/products", productRouter);
 app.use("/api/carts", cartRouter);
+app.use(express.static("public"));
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}...`);
