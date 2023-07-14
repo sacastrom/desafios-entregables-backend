@@ -1,9 +1,6 @@
 import fs from "fs";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
-
-export const __filename = fileURLToPath(import.meta.url);
-export const __dirname = dirname(__filename);
+import { __filename } from "../utils.js";
+import { __dirname } from "../utils.js";
 
 class CartManager {
   constructor(path) {
@@ -12,10 +9,8 @@ class CartManager {
 
   async getCarts() {
     try {
-      //console.log("Ruta absoluta del archivo actual:", __filename);
-      //console.log("Directorio del archivo actual:", __dirname + "/" + path);
       const data = await fs.promises.readFile(__dirname + "/" + path, "utf-8");
-      //const data = await fs.promises.readFile(this.path, "utf-8");
+
       return JSON.parse(data);
     } catch (error) {
       throw new Error("Error al leer el archivo de productos");
