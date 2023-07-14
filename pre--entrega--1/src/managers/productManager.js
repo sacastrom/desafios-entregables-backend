@@ -26,7 +26,6 @@ class ProductManager {
         !product.title ||
         !product.description ||
         !product.price ||
-        !product.thumbnail ||
         !product.code ||
         !product.category ||
         !product.stock
@@ -64,7 +63,7 @@ class ProductManager {
         title: product.title,
         description: product.description,
         price: product.price,
-        thumbnail: product.thumbnail,
+        thumbnail: product.thumbnail || [],
         code: product.code,
         stock: product.stock,
         category: product.category,

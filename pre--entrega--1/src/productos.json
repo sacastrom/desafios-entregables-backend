@@ -130,5 +130,27 @@
     "category": "almacen",
     "id": 15,
     "status": true
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": [],
+    "code": 2412199,
+    "stock": 32,
+    "category": "almacen",
+    "id": 3,
+    "status": true
+  },
+  {
+    "title": "cafe",
+    "description": "lorem ip",
+    "price": 25,
+    "thumbnail": "imagen",
+    "code": 2412198,
+    "stock": 32,
+    "category": "almacen",
+    "id": 8,
+    "status": true
   }
 ]
