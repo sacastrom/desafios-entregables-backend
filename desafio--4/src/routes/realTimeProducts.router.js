@@ -37,20 +37,13 @@ router.get("/", (req, res) => {
     }
   });
 
-  router.delete("/", async (req, res) => {
+  router.delete("/:productId", async (req, res) => {
     try {
-      const productId = req.body.id; // ID del producto a eliminar enviado en el cuerpo de la solicitud
-      
+      const productId = parseInt(req.params.productId);
       await productManager.deleteProductById(productId);
-  
+    
       // Cargar los productos nuevamente después de eliminar el producto
       const products = await productManager.getProducts();
-    
-
-      // Emitir el evento "productoEliminado" con el ID del producto eliminado
-      socketServer.emit("productoEliminado", productId);
-  
-      
   
       res.json({ status: "success", message: "Producto eliminado correctamente", products });
     } catch (error) {

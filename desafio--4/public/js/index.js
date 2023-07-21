@@ -8,14 +8,7 @@ socket.on("nuevoProducto", (producto) => {
   addProductToList(producto);
 });
 
-socket.on("productoEliminado", (productId) => {
-    // Eliminar el elemento correspondiente de la lista de productos en el cliente
-    const productElement = document.querySelector(`[data-id="${productId}"]`);
-    console.log(productElement)
-    if (productElement) {
-      productElement.remove();
-    }
-  });
+
 
 function addProductToList(producto) {
   // Crea un nuevo elemento de lista (<li>) para representar el producto
@@ -40,14 +33,16 @@ function addProductToList(producto) {
       </div>
     `;
 
+   /*  // Agrega el evento click al botón "Eliminar" del nuevo producto
+  newProductElement.querySelector(".delete-button").addEventListener("click", () => {
+    socket.emit("eliminarProducto", producto.id);
+  }); */
+
   // Agrega el nuevo elemento de producto a la lista existente
   const productContainer = document.querySelector(".product-list");
   productContainer.appendChild(newProductElement);
 
-    // Agrega el evento click al botón "Eliminar" del nuevo producto
-    newProductElement.querySelector(".delete-button").addEventListener("click", () => {
-        socket.emit("eliminarProducto", producto.id);
-      });
+   
 }
 
 
@@ -77,10 +72,35 @@ document.getElementById("productForm").addEventListener("submit", (event) => {
     });
 });
 
-// Agregar evento click a los botones "Eliminar"
-document.querySelectorAll(".delete-button").forEach((button) => {
-    button.addEventListener("click", () => {
-      const productId = button.getAttribute("data-id");
-      socket.emit("eliminarProducto", productId);
-    });
+// Escuchar el evento de clic en el botón "Eliminar"
+document.addEventListener("click", async (event) => {
+    if (event.target.classList.contains("delete-button")) {
+      const productId = event.target.getAttribute("data-id");
+      console.log(productId)
+  
+      try {
+        // Enviar una solicitud DELETE al servidor para eliminar el producto
+        const response = await fetch(`/realTime/${productId}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        console.log(response)
+  
+        if (response.ok) {
+          // Si la eliminación fue exitosa, eliminar el producto del DOM
+          const productElement = event.target.closest("li");
+          console.log(productElement)
+          productElement.remove();
+        } else {
+          // Si hubo un error en la eliminación, mostrar un mensaje de error
+          console.error("Error al eliminar el producto.");
+        }
+      } catch (error) {
+        console.error("Error al enviar la solicitud al servidor:", error);
+      }
+    }
   });
+  

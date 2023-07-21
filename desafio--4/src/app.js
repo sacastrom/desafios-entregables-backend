@@ -53,11 +53,4 @@ socketServer.on("connection", (socket) => {
     socketServer.emit("nuevoProducto", producto);
   });
 
-  socket.on("productoEliminado", (productId) => {
-    // Eliminar el elemento correspondiente de la lista de productos en el cliente
-    const productElement = document.querySelector(`li[data-product-id="${productId}"]`);
-    if (productElement) {
-      productElement.remove();
-    }
-  });
 })
