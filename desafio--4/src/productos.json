@@ -1,1 +1,46 @@
-[]
+[
+  {
+    "title": "Pelota azul",
+    "description": "Pelota azul",
+    "price": "500",
+    "thumbnail": [],
+    "code": "56",
+    "stock": "32",
+    "category": "Deportes",
+    "id": 2,
+    "status": true
+  },
+  {
+    "title": "Pelota morada",
+    "description": "Pelota morada",
+    "price": "500",
+    "thumbnail": [],
+    "code": "57",
+    "stock": "322",
+    "category": "Deportes",
+    "id": 1,
+    "status": true
+  },
+  {
+    "title": "casa",
+    "description": "casa de campo",
+    "price": "500000",
+    "thumbnail": [],
+    "code": "857",
+    "stock": "1",
+    "category": "Vivienda",
+    "id": 3,
+    "status": true
+  },
+  {
+    "title": "vaca",
+    "description": "vaca lechera",
+    "price": "800",
+    "thumbnail": [],
+    "code": "7",
+    "stock": "12",
+    "category": "Animal",
+    "id": 4,
+    "status": true
+  }
+]

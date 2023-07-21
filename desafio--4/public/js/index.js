@@ -66,6 +66,9 @@ document.getElementById("productForm").addEventListener("submit", (event) => {
     .then((response) => response.json())
     .then((producto) => {
       console.log("Datos guardados en el servidor:", producto);
+
+       // Limpiar el formulario después de enviar los datos
+       document.getElementById("productForm").reset();
     })
     .catch((error) => {
       console.error("Error al enviar los datos al servidor:", error);
