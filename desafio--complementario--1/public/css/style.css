@@ -1,0 +1,49 @@
+/* Estilos para la lista de productos */
+.product-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .product-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .product-list li:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Estilos para la imagen del producto */
+  .product-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  /* Estilos para los detalles del producto */
+  .product-details {
+    flex: 1;
+  }
+  
+  .product-details h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .product-details p {
+    margin: 5px 0;
+  }
+  
+  .product-details .delete-btn {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
