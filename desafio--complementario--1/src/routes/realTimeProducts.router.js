@@ -12,7 +12,7 @@ const products = new Products();
 router.get("/", async (req, res) => {
     try {
       const productos = await products.getAll();
-      res.render("realTimeProducts", { productos, style: "realtime.css" });
+      res.render("realTimeProducts", { productos, style: "realtime.css", script: "index.js" });
     } catch {
       console.error(error);
       res
