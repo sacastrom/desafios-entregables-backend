@@ -1,6 +1,6 @@
 import { Router } from "express";
 //import ProductManager from '../dao/fileManagers/productManager.js';
-//import productsModel from "../dao/models/product.js";
+import productsModel from "../dao/models/product.model.js";
 import Products from "../dao/dbManagers/product.js"
 
 const router = Router();
@@ -9,15 +9,13 @@ const router = Router();
 const products = new Products();
 
 router.get("/", async (req, res) => {
-  try {
-    const response = await products.getAll();
-    res.json({ message: "Aquí mostrara los productos", data: response });
-  } catch (error) {
-    console.error(error);
-    res
-      .status(500)
-      .send({ status: "Error", message: "Error interno del servidor" });
-  }
+  const { limit = 10, page = 1, sort, query } = req.query;
+  const results = await productsModel.paginate(query ? { category: query } : {}, { limit, page, lean: true, sort: sort ? { price: 1 } : { price: -1 } });
+  let prevLink = results.hasPrevPage ? `http://localhost:8080/productos/?page=${+page - 1}&limit=${limit}&query=${query}&sort=${sort}` : null;
+  let nextLink = results.hasNextPage ? `http://localhost:8080/productos/?page=${+page + 1}&limit=${limit}&query=${query}&sort=${sort}` : null;
+  results.prevLink = prevLink;
+  results.nextLink = nextLink;
+  res.send(results);
 });
 
 router.get("/:pid", async (req, res) => {

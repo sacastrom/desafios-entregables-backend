@@ -19,4 +19,10 @@
       </li>
     {{/each}}
   </ul>
+{{#if hasPrevPage}}
+ <a href="/?limit={{limit}}&page={{prevPage}}&sort={{sort}}&query={{query}}"><button class="btn btn-danger">Anterior</button></a>
+{{/if}}
+{{#if hasNextPage}}
+ <a href="/?limit={{limit}}&page={{nextPage}}&sort={{sort}}&query={{query}}"><button class="btn btn-danger">Siguiente</button></a>
+{{/if}}
 </div>

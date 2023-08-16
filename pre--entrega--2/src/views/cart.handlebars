@@ -1,15 +1,24 @@
-<h1>Carrito</h1>
-<ul>
-  {{#each productos}}
-  <li>
-    <img src="{{this.product.thumbnail}}" alt="{{this.product.title}}" style="width: 150px; border-radius: 10px; margin-left: 20px;">
-    <div>
-      <h3>{{this.product.title}}</h3>
-      <p><strong>Code:</strong> {{this.product.code}}</p>
-      <p><strong>Category:</strong> {{this.product.category}}</p>
-      <p><strong>Price:</strong> ${{this.product.price}}</p>
-      <p>Cantidad: {{this.quantity}} </p>
-    </div>
-  </li>
-  {{/each}}
-</ul>
+<div>
+  <h1>Carrito</h1>
+  <ul class="product-list">
+    {{#each productos}}
+      <li class="product-card">
+        <img
+          src="{{this.product.thumbnail}}"
+          alt="{{this.product.title}}"
+          class="product-image"
+        />
+        <div class="product-details">
+          <h3 class="product-title">{{this.product.title}}</h3>
+          <p class="product-info"><strong>Code:</strong>
+            {{this.product.code}}</p>
+          <p class="product-info"><strong>Category:</strong>
+            {{this.product.category}}</p>
+          <p class="product-info"><strong>Price:</strong>
+            ${{this.product.price}}</p>
+          <p class="product-quantity">Cantidad: {{this.quantity}}</p>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+</div>

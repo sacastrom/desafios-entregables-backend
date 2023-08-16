@@ -3,6 +3,7 @@ import { Router } from "express";
 import Products from "../dao/dbManagers/product.js";
 import Carts from "../dao/dbManagers/cart.js";
 import cartsModel from "../dao/models/cart.model.js";
+import productsModel from "../dao/models/product.model.js";
 
 const router = Router();
 
@@ -12,40 +13,42 @@ let products = await productManager.getProducts(); */
 const products = new Products();
 const carts = new Carts();
 
-router.get("/", async (req, res) => {
-  try {
-    const productos = await products.getAll();
+router.get("/",async (req,res)=>{
+  const {limit = 10, page = 1, sort, query} = req.query
+  const {docs,hasPrevPage,hasNextPage,nextPage,prevPage} = await productsModel.paginate(query ? {category: query} : {},{limit, page, lean: true, sort: sort ? {price:1} : {price:-1}})
+  res.render("index",{title: "Productos", 
+  productos: docs,  
+  hasPrevPage,
+  hasNextPage,
+  prevPage,
+  nextPage,
+  limit,
+  sort,
+  query,
+  style: "style.css",
+  script: "agregarProductos.js"
+})
+})
 
-    res.render("index", {
-      productos,
-      style: "style.css",
-      script: "agregarProducto.js",
-    });
-    console.log(productos);
-  } catch {
-    console.error(error);
+router.get("/cart/:cid", async (req, res) => {
+  try {
+    const id = req.params.cid;
+    let cart = await cartsModel.findOne({ _id: id }).lean();
+    let productos = cart.products;
+      res.render("cart", { productos, style: "cart.css", script: "index.js" });
+    /* if (cart) {
+      let productos = cart.products;
+      res.render("cart", { productos: productos, style: "cart.css" });
+    } else {
+      res.send("Carrito no encontrado");
+    } */
+  } catch (error) {
+    
     res
       .status(500)
       .send({ status: "Error", message: "Error interno del servidor" });
   }
-});
-
-router.get("/cart/:cid",async(req,res)=>{
-  
-  try {
-    const id = req.params.cid;
-    let cart = await cartsModel.findOne({_id: id }).lean()
-      if (cart) {
-          let productos = cart.products;
-          console.log(productos)
-          res.render("cart", { title: "Carrito", productos: productos });
-      } else {
-          res.send("Carrito no encontrado");
-      }
-  } catch (err) { 
-      
-      res.send("Error al cargar el carrito");
   }
-})
+);
 
 export default router;
