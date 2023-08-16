@@ -1,26 +1,15 @@
-<div>
-  <h1>carrito</h1>
-  <ul class="product-list">
-    {{#each productos}}
-      <li>
-        {{#if this.product}}
-          <div class="product-image">
-            <img src="{{this.product.thumbnail}}" alt="{{this.product.title}}">
-          </div>
-          <div class="product-details">
-            <h2>{{this.product.title}}</h2>
-            <p>Descripción: {{this.product.description}}</p>
-            <p>Precio: {{this.product.price}}</p>
-            <p>Código: {{this.product.code}}</p>
-            <p>Stock: {{this.product.stock}}</p>
-            <p>Categoría: {{this.product.category}}</p>
-          </div>
-        {{else}}
-          <div class="product-details">
-            <p>Producto no disponible</p>
-          </div>
-        {{/if}}
-      </li>
-    {{/each}}
-  </ul>
-</div>
+<h1>Carrito</h1>
+<ul>
+  {{#each productos}}
+  <li>
+    <img src="{{this.product.thumbnail}}" alt="{{this.product.title}}" style="width: 150px; border-radius: 10px; margin-left: 20px;">
+    <div>
+      <h3>{{this.product.title}}</h3>
+      <p><strong>Code:</strong> {{this.product.code}}</p>
+      <p><strong>Category:</strong> {{this.product.category}}</p>
+      <p><strong>Price:</strong> ${{this.product.price}}</p>
+      <p>Cantidad: {{this.quantity}} </p>
+    </div>
+  </li>
+  {{/each}}
+</ul>

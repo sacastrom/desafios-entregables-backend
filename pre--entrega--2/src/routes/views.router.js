@@ -2,6 +2,7 @@ import { Router } from "express";
 //import ProductManager from '../dao/fileManagers/productManager.js',
 import Products from "../dao/dbManagers/product.js";
 import Carts from "../dao/dbManagers/cart.js";
+import cartsModel from "../dao/models/cart.model.js";
 
 const router = Router();
 
@@ -29,25 +30,22 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/cart/:cid", async (req, res) => {
-  const id = req.params.cid;
+router.get("/cart/:cid",async(req,res)=>{
+  
   try {
-    const carrito = await carts.getById(id);
-    console.log(carrito);
-    if (carrito) {
-      let productos = carrito.products;
-      console.log("Productos en el carrito");
-      console.log(productos);
-      res.render("cart", { productos: productos });
-    } else {
-      res.send("Carrito no encontrado");
-    }
-  } catch (error) {
-    //console.error(error);
-    res
-      .status(500)
-      .send({ status: "Error", message: "Error interno del servidor" });
+    const id = req.params.cid;
+    let cart = await cartsModel.findOne({_id: id }).lean()
+      if (cart) {
+          let productos = cart.products;
+          console.log(productos)
+          res.render("cart", { title: "Carrito", productos: productos });
+      } else {
+          res.send("Carrito no encontrado");
+      }
+  } catch (err) { 
+      
+      res.send("Error al cargar el carrito");
   }
-});
+})
 
 export default router;
