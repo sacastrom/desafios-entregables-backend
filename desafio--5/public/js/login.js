@@ -1,4 +1,4 @@
-async function iniciarSesion() {
+async function iniciarSesion(event) {
     event.preventDefault(); // Evita que el formulario se envíe de forma tradicional
 
     // Obtener los valores de usuario y contraseña
@@ -17,20 +17,20 @@ async function iniciarSesion() {
             headers:{
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({dataUser})
+            body: JSON.stringify(dataUser)
         })
         const data = await response.json()
         console.log(data)
-        if(data.status === "OK"){
-            setTimeout(()=>{
-                window.location.href = "http://localhost:8080/views"
-             },2000)
-        }else{
-            alert("Usuario no válido")
-        }
+        if (data.status === "OK") {
+            setTimeout(() => {
+              window.location.href = "/views";
+            }, 1000);
+          } else {
+            alert("Usuario no válido");
+          }
     } catch (error) {
       console.log("Error en la solicitud Fetch:", error);
     }
   }
 
-  document.getElementById("loginForm").addEventListener("submit", iniciarSesion);
+  document.getElementById("login-form").addEventListener("submit", iniciarSesion);

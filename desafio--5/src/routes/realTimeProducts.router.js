@@ -1,7 +1,7 @@
 import { Router } from "express";
 //import ProductManager from '../dao/fileManagers/productManager.js'
 import { socketServer } from "../app.js";
-import Products from "../dao/dbManagers/product.js"
+import Products from "../dao/dbManagers/productDao.js"
 
 const router = Router();
 

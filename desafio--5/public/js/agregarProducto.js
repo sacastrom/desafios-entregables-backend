@@ -1,6 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Obtener todos los botones "Agregar al carrito"
     const addToCartButtons = document.querySelectorAll(".add-to-cart-button");
+    let botonCerrarSesion = document.getElementById("cerrarSesion");
+
+    botonCerrarSesion.addEventListener("click",async(e)=>{
+      e.preventDefault()
+      console.log("holaaa")
+      let response = await fetch("/logout")
+      let data = await response.json()
+      setTimeout(()=>{
+         window.location.href = "http://localhost:8080"
+      },2000)
+      console.log(data)
+   })
   
     // Agregar un evento de clic a cada botón
     addToCartButtons.forEach((button) => {
@@ -31,4 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
           });
       });
     });
+
+    
   });

@@ -15,7 +15,7 @@ router.post("/login", async (req,res) => {
     const {user,password} = req.body
     const userLogin = await usersModel.findOne({user: user, password: password})
     console.log(userLogin)
-    if(user === "adminCoder@coder.com" && password === "adminCod3r123"){
+    if(user === "AdminCoder" && password === "adminCod3r123"){
         req.session.name = "Admin"
         req.session.last_name = "Coder"
         req.session.user = "AdminCoder"
@@ -23,16 +23,16 @@ router.post("/login", async (req,res) => {
         req.session.password = "adminCod3r123"
         req.session.rol = "admin"
         return res.json({
-            status: "Ok",
+            status: "OK",
             message: "Es Admin"
         })
     }else{
         if(userLogin){
-        req.session.name = user.name
-        req.session.last_name = user.last_name
-        req.session.user = user.user
-        req.session.mail = user.mail
-        req.session.password = user.password
+        req.session.name = userLogin.name
+        req.session.last_name = userLogin.last_name
+        req.session.user = userLogin.user
+        req.session.mail = userLogin.mail
+        req.session.password = userLogin.password
         req.session.rol = "user"
             return res.json({
                 status: "OK",
@@ -68,6 +68,20 @@ router.post("/signup", async(req,res)=>{
             message: "Error al registrar el usuario"
         })
     }
+})
+
+router.get("/logout",(req,res)=>{
+    req.session.destroy(err=>{
+        if(!err){
+           return res.json({
+            message: "Sesión cerrada"
+           })
+        }else{
+           return res.json({
+            message: "Error al cerrar sesión"
+           }) 
+        }
+    })
 })
 
 export default router;

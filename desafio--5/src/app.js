@@ -5,8 +5,8 @@ import viewsRouter from "./routes/views.router.js";
 import realTimeRouter from "./routes/realTimeProducts.router.js";
 import chatRouter from "./routes/chat.router.js";
 import sessionRouter from "./routes/session.router.js";
-import messagesModel from "./dao/models/message.model.js";
-import Messages from "./dao/dbManagers/messages.js";
+//import messagesModel from "./dao/models/message.model.js";
+import Messages from "./dao/dbManagers/messagesDao.js";
 import handlebars from "express-handlebars";
 import { engine } from "express-handlebars";
 import { __filename } from "./utils.js";
@@ -60,9 +60,17 @@ const httpServer = app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}...`);
 });
 
+
+
 app.engine("handlebars", handlebars.engine());
 app.set("views", __dirname + "/views");
 app.set("view engine", "handlebars");
+
+
+
+app.use(express.json());
+app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
 
 //Función de autenticación
 function auth(req,res,next){
@@ -73,12 +81,9 @@ function auth(req,res,next){
   }
 }
 
-app.use(express.json());
-app.use(express.static("public"));
-app.use(express.urlencoded({ extended: true }));
 app.use("/api/products", productRouter);
 app.use("/api/carts", cartRouter);
-app.use("/views", auth, viewsRouter);
+app.use("/views",auth, viewsRouter)
 app.use("/realTime", realTimeRouter);
 app.use("/chat", chatRouter);
 app.use("/", sessionRouter)

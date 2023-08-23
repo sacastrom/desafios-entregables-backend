@@ -1,4 +1,4 @@
-async function signupForm() {
+async function signupForm(event) {
     event.preventDefault(); // Evita que el formulario se envíe de forma tradicional
 
     // Obtener los valores de usuario y contraseña
