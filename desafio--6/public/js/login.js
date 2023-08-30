@@ -20,7 +20,7 @@ async function iniciarSesion(event) {
             body: JSON.stringify(dataUser)
         })
         const data = await response.json()
-        console.log(data)
+        /* console.log(data) */
         if (data.status === "OK") {
             setTimeout(() => {
               window.location.href = "/views";

@@ -15,7 +15,9 @@ import { Server } from "socket.io";
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 import session from "express-session";
-import MongoStore from "connect-mongo"
+import MongoStore from "connect-mongo";
+import passport from "passport";
+import initializePassport from "./config/passport.config.js";
 
 dotenv.config();
 
@@ -53,6 +55,10 @@ app.use(
     saveUninitialized: false,
   })
 );
+
+initializePassport();
+app.use(passport.initialize());
+app.use(passport.session());
 
 const messages = new Messages();
 
