@@ -22,6 +22,19 @@ export const generateToken = (user)=>{
     return token
 }
 
+export const authToken = (req,res,next)=>{
+  let auth = req.cookies.coderCookieToken
+  if(!auth) return res.json({status: "error", message: "Invalid auth"})
+
+  const token = auth
+
+  jwt.verify(token,privateKey,(err,user)=>{
+      if(err) res.json({status: "error", message: "Invalid Token"})
+      req.user = user
+      next()
+  })
+}
+
 export const passportCall = (strategy) => {
   return async (req, res, next) => {
     passport.authenticate(strategy, function (error, user, info) {

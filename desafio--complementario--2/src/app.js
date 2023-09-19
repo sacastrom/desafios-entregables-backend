@@ -11,6 +11,7 @@ import handlebars from "express-handlebars";
 import { engine } from "express-handlebars";
 import { __filename } from "./utils.js";
 import { __dirname } from "./utils.js";
+import { authToken} from "./utils.js";
 import { Server } from "socket.io";
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
@@ -18,6 +19,7 @@ import session from "express-session";
 import MongoStore from "connect-mongo";
 import passport from "passport";
 import initializePassport from "./config/passport.config.js";
+import cookieParser from "cookie-parser"
 
 dotenv.config();
 
@@ -39,6 +41,9 @@ dbConnect.then(
     console.log("Error en la conexión a la base de datos", error);
   }
 );
+
+//Cookie
+app.use(cookieParser("C0D3RS3CR3T"))
 
 app.use(
   session({
@@ -89,7 +94,7 @@ function auth(req,res,next){
 
 app.use("/api/products", productRouter);
 app.use("/api/carts", cartRouter);
-app.use("/views", viewsRouter)
+app.use("/views", authToken,  viewsRouter)
 app.use("/realTime", realTimeRouter);
 app.use("/chat", chatRouter);
 app.use("/", sessionRouter)
