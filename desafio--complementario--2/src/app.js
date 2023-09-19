@@ -78,18 +78,18 @@ app.use(express.json());
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
-//Función de autenticación
+/* //Función de autenticación
 function auth(req,res,next){
-  if(req.session.rol){
+  if(req.session.role){
       return next()
   }else{
       res.send("Error")
   }
-}
+} */
 
 app.use("/api/products", productRouter);
 app.use("/api/carts", cartRouter);
-app.use("/views",auth, viewsRouter)
+app.use("/views", viewsRouter)
 app.use("/realTime", realTimeRouter);
 app.use("/chat", chatRouter);
 app.use("/", sessionRouter)

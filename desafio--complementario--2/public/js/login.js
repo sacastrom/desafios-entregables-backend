@@ -21,7 +21,7 @@ async function iniciarSesion(event) {
         })
         const data = await response.json()
         /* console.log(data) */
-        if (data.status === "OK") {
+        if (data.status === "success") {
             setTimeout(() => {
               window.location.href = "/views";
             }, 1000);

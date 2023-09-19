@@ -1,8 +1,14 @@
 import { Router } from "express";
 import usersModel from "../dao/models/user.model.js";
-import { createHash, isValidPassword } from "../utils.js";
+import {
+  createHash,
+  generateToken,
+  isValidPassword,
+  passportCall,
+  authorization,
+} from "../utils.js";
 import passport from "passport";
-import local from "passport-local"
+import local from "passport-local";
 
 const router = Router();
 
@@ -22,29 +28,69 @@ router.get("/", (req, res) => {
   });
 });
 
- router.post("/login",passport.authenticate("login",{
-    failureRedirect: "/failLogin"}),async(req,res)=>{
-        console.log(req.user, "existe")
-        if(!req.user){
-            return res.status(401).json({status: "Error", message: "Error de autenticación"})
-        }else{
-            req.session.name = req.user.name
-            req.session.last_name = req.user.last_name
-            req.session.user = req.user.user
-            req.session.email = req.user.email
-            req.session.password = req.user.password
-            req.session.rol = "user"
-            return res.json({
-                status: "OK",
-                message: "Logueado con exito"
-            })
-        }
-    })
+/* router.post(
+  "/login",
+  passport.authenticate("login", {
+    failureRedirect: "/failLogin",
+  }),
+  async (req, res) => {
+    console.log(req.user, "existe");
+    if (!req.user) {
+      return res
+        .status(401)
+        .json({ status: "Error", message: "Error de autenticación" });
+    } else {
+      req.session.name = req.user.name;
+      req.session.last_name = req.user.last_name;
+      req.session.user = req.user.user;
+      req.session.email = req.user.email;
+      req.session.password = req.user.password;
+      req.session.rol = "user";
+      return res.json({
+        status: "OK",
+        message: "Logueado con exito",
+      });
+    }
+  }
+); */
 
 router.get("/failLogin", async (req, res) => {
-    console.log("failed strategy");
-    res.send({ error: "failed" });
-  }); 
+  console.log("failed strategy");
+  res.send({ error: "failed" });
+});
+
+router.post("/login", async (req, res) => {
+  const { user, password } = req.body;
+  const userLogin = await usersModel.findOne({
+    user: user,
+  });
+
+  if (!userLogin) {
+    return res.json({ status: "error", message: "User not found" });
+  } else {
+    if (!isValidPassword(userLogin.password, password)) {
+      return res.json({ status: "error", message: "Invalid password" });
+    } else {
+      const myToken = generateToken(userLogin);
+      res.cookie("coderCookieToken", myToken, {
+        maxAge: 60 * 60 * 1000,
+        httpOnly: true,
+      });
+      //req.session.rol = true;
+      return res.json({ status: "success" });
+    }
+  }
+});
+
+router.get(
+  "/current",
+  passportCall("jwt"),
+  authorization("user"),
+  (req, res) => {
+    console.log("calling current");
+    res.send(req.user);
+  }
+);
 
 /*  router.post("/login", async (req, res) => {
   const { user, password } = req.body;
@@ -149,5 +195,21 @@ router.get("/logout", (req, res) => {
     }
   });
 });
+
+router.get(
+  "/github",
+  passport.authenticate("github", { scope: ["user:email"] }),
+  async (req, res) => {}
+);
+
+router.get(
+  "/githubcallback",
+  passport.authenticate("github", { failureRedirect: "/" }),
+  async (req, res) => {
+    req.session.user = req.user;
+    console.log(req.user);
+    res.redirect("/views");
+  }
+);
 
 export default router;
