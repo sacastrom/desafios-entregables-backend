@@ -6,7 +6,7 @@ import realTimeRouter from "./routes/realTimeProducts.router.js";
 import chatRouter from "./routes/chat.router.js";
 import sessionRouter from "./routes/session.router.js";
 //import messagesModel from "./dao/models/message.model.js";
-import Messages from "./dao/dbManagers/messagesDao.js";
+import Messages from "./dao/mongo/messagesDao.js";
 import handlebars from "express-handlebars";
 import { engine } from "express-handlebars";
 import { __filename } from "./utils.js";

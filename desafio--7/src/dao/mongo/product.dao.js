@@ -1,4 +1,4 @@
-import productsModel from "../models/product.model.js";
+import productsModel from "./models/product.model.js";
 
 export default class Products {
   getAll = async () => {

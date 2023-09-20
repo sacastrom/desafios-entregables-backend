@@ -1,5 +1,5 @@
-import cartsModel from "../models/cart.model.js";
-import productsModel from "../models/product.model.js";
+import cartsModel from "./models/cart.model.js";
+import productsModel from "./models/product.model.js";
 
 export default class Carts {
   getAll = async () => {

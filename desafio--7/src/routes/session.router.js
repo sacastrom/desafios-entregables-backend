@@ -1,5 +1,5 @@
 import { Router } from "express";
-import usersModel from "../dao/models/user.model.js";
+import usersModel from "../dao/mongo/models/user.model.js";
 import {
   createHash,
   generateToken,

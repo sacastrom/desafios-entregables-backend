@@ -1,6 +1,6 @@
 import passport from "passport";
 import local from "passport-local";
-import usersModel from "../dao/models/user.model.js";
+import usersModel from "../dao/mongo/models/user.model.js";
 import { createHash, isValidPassword } from "../utils.js";
 import GitHubStrategy from "passport-github2";
 import * as dotenv from "dotenv";
