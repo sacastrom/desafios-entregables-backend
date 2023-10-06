@@ -2,11 +2,11 @@ import cartsModel from "./models/cart.model.js";
 import productsModel from "./models/product.model.js";
 
 export default class Carts {
-  getAll = async () => {
+  getCarts = async () => {
     return await cartsModel.find({}).lean();
   };
 
-  getById = async (id) => {
+  getCartById = async (id) => {
     return await cartsModel.findOne({ _id: id });
   };
 

@@ -1,15 +1,15 @@
 import productsModel from "./models/product.model.js";
 
 export default class Products {
-  getAll = async () => {
+  getProducts = async () => {
     return await productsModel.find({}).lean();
   };
 
-  getById = async (id) => {
+  getProductById = async (id) => {
     return await productsModel.find({_id:id});
   };
 
-  save = async (data) => {
+  saveProduct = async (data) => {
     const respuesta = productsModel.create(data);
     return respuesta;
   };
@@ -19,7 +19,7 @@ export default class Products {
     return respuesta;
   };
 
-  delete = async (id) => {
+  deleteProduct = async (id) => {
     const respuesta = productsModel.findByIdAndDelete(id);
     return respuesta;
   };

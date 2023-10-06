@@ -2,9 +2,9 @@ import { cartsDao } from "../dao/index.js";
 
 async function getCarts(req, res) {
   try {
-    let response = await cartsDao.getAll();
-    /* const limit = req.query.limit || response.length;
-        const cartsLimit = response.slice(0, limit); */
+    let response = await cartsDao.getCarts();
+    const limit = req.query.limit || response.length;
+        const cartsLimit = response.slice(0, limit);
     res.json({ data: response });
   } catch (error) {
     console.error(error);
@@ -27,7 +27,7 @@ async function createCart(req, res) {
 async function getCartByID(req, res) {
   try {
     const id = req.params.cid;
-    let cart = await cartsDao.getById(id);
+    let cart = await cartsDao.getCartById(id);
     console.log(cart);
 
     if (cart) {
