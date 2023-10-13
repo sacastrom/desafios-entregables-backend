@@ -1,0 +1,33 @@
+<div>
+  <a href="" id="cerrarSesion">Cerrar Sesion</a>
+<p>Bienvenido {{nombre}} {{apellido}}</p>
+<p>Usuario: {{this.user}}</p>
+<p>Mail: {{mail}}</p>
+<p>Rol: {{rol}}</p>
+  <h1>Lista de Productos</h1>
+  <ul class="product-list">
+    {{#each productos}}
+      <li>
+        <div class="product-image">
+          <img src="{{this.thumbnail}}" alt="{{this.title}}">
+        </div>
+        <div class="product-details">
+          <h2>{{this.title}}</h2>
+          <p>{{this.description}}</p>
+          <p>Precio: ${{this.price}}</p>
+          <p>Código: {{this.code}}</p>
+          <p>Stock: {{this.stock}}</p>
+          <p>Categoría: {{this.category}}</p>
+          <p>Versión: {{this.__v}}</p>
+          <button class="add-to-cart-button" data-id="{{_id}}">Agregar al carrito</button>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+{{#if hasPrevPage}}
+ <a href="/?limit={{limit}}&page={{prevPage}}&sort={{sort}}&query={{query}}"><button class="btn btn-danger">Anterior</button></a>
+{{/if}}
+{{#if hasNextPage}}
+ <a href="/?limit={{limit}}&page={{nextPage}}&sort={{sort}}&query={{query}}"><button class="btn btn-danger">Siguiente</button></a>
+{{/if}}
+</div>
